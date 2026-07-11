@@ -1,5 +1,5 @@
 import subprocess
-from config import CONTAINER_NAME, SESSION_NAME, SOURCE_ENV_CMD
+from config import CONTAINER_NAME, SESSION_NAME
 
 def has_session() -> bool:
     result = subprocess.run(

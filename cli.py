@@ -1,14 +1,20 @@
 import argparse
 from lib.docker_utils import ensure_container_running
 from lib.tmux_utils import ensure_session_running, ensure_window_running
+from lib.ros_actions import launch_sim, launch_teleop
 
-
-def cmd_start_sim(args) -> None:
+def cmd_start_sim(args: argparse.Namespace) -> None:
     ensure_container_running()
+
     ensure_session_running()
     ensure_window_running("sim")
+    launch_sim("sim")
 
-    print("TODO: launch sim")
+    if args.teleop:
+        ensure_window_running("teleop")
+        launch_teleop("teleop")
+
+    # TODO: attach
 
 def main() -> None:
     parser = argparse.ArgumentParser(prog="racerbot")

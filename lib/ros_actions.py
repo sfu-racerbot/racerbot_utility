@@ -1,6 +1,13 @@
-from config import SESSION_NAME, RUN_SIM
-from lib.docker_utils import ensure_container_running
-import subprocess
+from config import RUN_SIM, SOURCE_ENV_CMD, RUN_TELEOP
+from lib.tmux_utils import send_keys
 
-def run_sim(window_name: str) -> None:
-    pass
+def source_window(window_name: str) -> None:
+    send_keys(f"f1tenth:{window_name}", SOURCE_ENV_CMD)
+
+def launch_sim(window_name: str) -> None:
+    source_window(window_name)
+    send_keys(f"f1tenth:{window_name}", RUN_SIM)
+
+def launch_teleop(window_name: str) -> None:
+    source_window(window_name)
+    send_keys(f"f1tenth:{window_name}", RUN_TELEOP)

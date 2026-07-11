@@ -12,11 +12,11 @@ def _start_container() -> None:
     subprocess.run(["docker", "start", CONTAINER_NAME], check=True)
 
 def ensure_container_running() -> None:
-    if not is_container_running:
+    if not is_container_running():
         print(f"Starting container '{CONTAINER_NAME}'...")
-        start_container()
+        _start_container()
     else:
-        print("Container '{CONTAINER_NAME}' already running.")
+        print(f"Container '{CONTAINER_NAME}' already running.")
 
 def dexec(cmd: str) -> subprocess.CompletedProcess:
     return subprocess.run(["docker", "exec", CONTAINER_NAME, "bash", "-c", cmd])
