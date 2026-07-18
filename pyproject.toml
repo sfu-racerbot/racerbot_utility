@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "racerbot_utility"
 version = "0.1.0"
-description = "Contains various shorthands for setting up the RoboRacer simulator/environment"
+description = "Streamlines ROS 2 development and testing for the RoboRacer simulator"
 readme = "README.md"
 requires-python = ">=3.8"
 dependencies = []

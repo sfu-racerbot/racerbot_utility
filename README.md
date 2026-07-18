@@ -1,6 +1,6 @@
 # Racerbot Utility
 
-Racerbot Utility provides automation scripts and tools that streamline ROS 2 development and testing.
+Racerbot Utility is a Python CLI that streamlines ROS 2 development and testing.
 
 ## How to Use
 
@@ -59,7 +59,7 @@ racerbot-utility end-sim --session-only
 ```
 racerbot_utility/
 ├── LICENSE
-├── pyproject.toml # Project configuration for pip
+├── pyproject.toml   # Project configuration for pip
 ├── README.md
 ├── requirements.txt # Python dependencies (managed via pip)
 ├── src/
