@@ -3,6 +3,19 @@
 > Make sure you've followed the [README setup](./README.md#how-to-use) first.
 
 ## Setup
+
+1. Create and activate virtual environment.
+
+```bash
+git clone https://github.com/sfu-racerbot/racerbot_utility.git
+cd racerbot_utility                            # Change directory to racerbot_utility
+python3 -m venv .venv                          # (use `python` on Windows)
+source .venv/bin/activate                      # macOS/Linux
+.\.venv\Scripts\activate.ps1                   # Windows PowerShell
+```
+
+2. Install dependencies with `pip`.
+
 ```bash
 pip install -r requirements.txt
 pre-commit install
