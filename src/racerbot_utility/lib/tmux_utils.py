@@ -1,5 +1,17 @@
 import subprocess
-from racerbot_utility.config import CONTAINER_NAME, SESSION_NAME
+from racerbot_utility.config import CONTAINER_NAME, SESSION_NAME, SOURCE_ENV_CMD
+
+
+def configure_default_command() -> None:
+    conf_content = (
+        f"set -g default-command \"bash -c '{SOURCE_ENV_CMD} && exec bash'\"\n"
+    )
+    subprocess.run(
+        ["docker", "exec", "-i", CONTAINER_NAME, "bash", "-c", "cat > ~/.tmux.conf"],
+        input=conf_content,
+        text=True,
+        check=True,
+    )
 
 
 def has_session() -> bool:
@@ -30,6 +42,7 @@ def _new_session(window_name: str = "sim") -> None:
 
 
 def ensure_session_running() -> None:
+    configure_default_command()
     if not has_session():
         print(f"Creating tmux session '{SESSION_NAME}'...")
         _new_session()

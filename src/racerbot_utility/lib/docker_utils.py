@@ -12,7 +12,7 @@ def is_container_running() -> bool:
 
 
 def _start_container() -> None:
-    subprocess.run(["docker", "start", CONTAINER_NAME], check=True)
+    subprocess.run(["docker", "start", CONTAINER_NAME], check=True, capture_output=True)
 
 
 def ensure_container_running() -> None:
@@ -24,7 +24,7 @@ def ensure_container_running() -> None:
 
 
 def end_container() -> None:
-    subprocess.run(["docker", "stop", CONTAINER_NAME], check=True)
+    subprocess.run(["docker", "stop", CONTAINER_NAME], check=True, capture_output=True)
 
 
 def dexec(cmd: str) -> subprocess.CompletedProcess:

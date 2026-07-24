@@ -10,3 +10,12 @@ SOURCE_ENV_CMD = (
 
 RUN_SIM = "ros2 launch f1tenth_gym_ros gym_bridge_launch.py"
 RUN_TELEOP = "ros2 run teleop_twist_keyboard teleop_twist_keyboard"
+
+INITIAL_POSE = {
+    "x": 0.0,
+    "y": 0.0,
+    "yaw": 0.0,  # radians
+}
+
+ODOM_TOPIC = "/ego_racecar/odom"
+DRIVE_TOPIC = "/drive"

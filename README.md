@@ -54,5 +54,26 @@ Options:
 racerbot-utility end-sim --session-only
 ```
 
+### Find the car's current pose
+```bash
+racerbot-utility find-pose
+```
+Prints the car's current x/y position — useful for picking a good reset pose that avoids obstacles.
+
+### Reset the car's pose and speed
+```bash
+racerbot-utility reset-car
+```
+Resets to the default pose (from `config.py`) and sets speed to 0.
+
+Options:
+- `--x` — override x position
+- `--y` — override y position
+- `--yaw` — override yaw (radians)
+
+```bash
+racerbot-utility reset-car --x 3.2 --y 1.5
+```
+
 ## Contributing
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for setup and guidelines.

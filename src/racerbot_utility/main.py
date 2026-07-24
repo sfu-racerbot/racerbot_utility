@@ -10,7 +10,12 @@ from racerbot_utility.lib.tmux_utils import (
     attach,
     end_session,
 )
-from racerbot_utility.lib.ros_actions import launch_sim, launch_teleop
+from racerbot_utility.lib.ros_actions import (
+    launch_sim,
+    launch_teleop,
+    find_current_pose,
+    reset_car,
+)
 
 
 def cmd_start_sim(args: argparse.Namespace) -> None:
@@ -38,9 +43,20 @@ def cmd_start_sim(args: argparse.Namespace) -> None:
 
 def cmd_end_sim(args: argparse.Namespace) -> None:
     end_session()
+    print("Sim Ended.")
 
     if not args.session_only:
         end_container()
+        print("Container Ended.")
+
+
+def cmd_reset_car(args: argparse.Namespace) -> None:
+    reset_car(x=args.x, y=args.y, yaw=args.yaw)
+    print("Car reset.")
+
+
+def cmd_find_pose(args: argparse.Namespace) -> None:
+    find_current_pose()
 
 
 def main() -> None:
@@ -63,6 +79,23 @@ def main() -> None:
         help="End the tmux session but leave the container running",
     )
     p_end.set_defaults(func=cmd_end_sim)
+
+    p_reset = sub.add_parser("reset-car", help="Reset the car's pose and speed")
+    p_reset.add_argument(
+        "--x", type=float, default=None, help="X position (defaults to config)"
+    )
+    p_reset.add_argument(
+        "--y", type=float, default=None, help="Y position (defaults to config)"
+    )
+    p_reset.add_argument(
+        "--yaw", type=float, default=None, help="Yaw in radians (defaults to config)"
+    )
+    p_reset.set_defaults(func=cmd_reset_car)
+
+    p_find_pose = sub.add_parser(
+        "find-pose", help="Print the car's current pose (for picking a good default)"
+    )
+    p_find_pose.set_defaults(func=cmd_find_pose)
 
     args = parser.parse_args()
     args.func(args)
