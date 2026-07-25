@@ -6,14 +6,7 @@ Racerbot Utility is a Python CLI that streamlines ROS 2 development and testing.
 
 1. Make sure your `racerbot` Docker container exists (see [Racerbot Workspace](https://github.com/sfu-racerbot/racerbot_ws)).
 
-
-2. Install the utility with `pip`
-
-```bash
-pip install git+https://github.com/sfu-racerbot/racerbot_utility
-```
-
-3. Create and activate a virtual environment
+2. Create and activate a virtual environment
 
 > Use `python3` on macOS/Linux and `python` on Windows, depending on your system's PATH setup. Check with `python3 --version` or `python --version`.
 
@@ -22,6 +15,12 @@ cd your/path/to/racerbot_ws     # Change directory to racerbot_ws
 python3 -m venv .venv           # (use `python` on Windows)
 source .venv/bin/activate       # macOS/Linux
 .\.venv\Scripts\activate.ps1    # Windows PowerShell
+```
+
+3. Install the utility with `pip`
+
+```bash
+pip install git+https://github.com/sfu-racerbot/racerbot_utility
 ```
 
 ## Commands

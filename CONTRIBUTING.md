@@ -5,7 +5,6 @@
 1. Clone the repo and create a virtual environment
 
 ```bash
-git clone https://github.com/sfu-racerbot/racerbot_ws.git
 git clone https://github.com/sfu-racerbot/racerbot_utility.git
 cd racerbot_utility                            # Change directory to racerbot_utility
 python3 -m venv .venv                          # (use `python` on Windows)
